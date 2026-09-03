@@ -43,6 +43,11 @@
   </tr>
 </table>
 
+<div align="center">
+  <img src="https://play.pokemonshowdown.com/sprites/gen5ani/gengar.gif" alt="Gengar Companion" width="60px" />
+  <br/>
+  <sub><b>Companion:</b> Charizard (Lvl. 100)</sub>
+</div>
 ---
 
 ### 🛠️ Architecture & Tech Stack
