@@ -3,17 +3,71 @@ name: Visitor Guestbook
 on:
   issues:
     types: [opened]
-  workflow_dispatch:
 
 permissions:
   contents: write
   issues: write
 
 jobs:
-  update-guestbook:
+  sign:
+    # Only run when the issue title starts with "Guestbook"
+    if: startsWith(github.event.issue.title, 'Guestbook')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: muesli/readme-guestbook@master
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Append to Guestbook
+        env:
+          USER_LOGIN: ${{ github.event.issue.user.login }}
+          USER_AVATAR: ${{ github.event.issue.user.avatar_url }}
+          MESSAGE: ${{ github.event.issue.body }}
+        run: |
+          python3 -c "
+          import os, re
+
+          user = os.environ['USER_LOGIN']
+          avatar = os.environ['USER_AVATAR']
+          msg = os.environ.get('MESSAGE', '').replace('\n', ' ').strip()
+          msg = re.sub(r'[|<>]', '', msg)[:120]
+
+          new_row = f'| <img src=\"{avatar}&s=40\" width=\"30\" /> | **[@{user}](https://github.com/{user})** | {msg} |'
+
+          with open('README.md', 'r', encoding='utf-8') as f:
+              content = f.read()
+
+          start = '<!-- GUESTBOOK-START -->'
+          end = '<!-- GUESTBOOK-END -->'
+          header = '| Avatar | User | Message |\n| :---: | :--- | :--- |'
+
+          if start in content and end in content:
+              match = re.search(f'{start}(.*?){end}', content, re.DOTALL)
+              inner = match.group(1).strip()
+              
+              if '| Avatar |' not in inner:
+                  rows = [new_row]
+              else:
+                  existing_rows = [r for r in inner.split('\n') if r.startswith('|') and not r.startswith('| Avatar') and not r.startswith('| :---')]
+                  rows = [new_row] + existing_rows[:9] # Keep latest 10 signatures
+
+              updated = f'{start}\n\n{header}\n' + '\n'.join(rows) + f'\n\n{end}'
+              new_content = re.sub(f'{start}.*?{end}', updated, content, flags=re.DOTALL)
+
+              with open('README.md', 'w', encoding='utf-8') as f:
+                  f.write(new_content)
+          "
+
+      - name: Commit & Push Signature
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "Add guestbook signature from @${{ github.event.issue.user.login }}" || exit 0
+          git push
+
+      - name: Close Issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_NUM: ${{ github.event.issue.number }}
+        run: |
+          gh issue comment $ISSUE_NUM --body "Thank you for signing my profile guestbook! ✨ Your note has been added."
+          gh issue close $ISSUE_NUM
