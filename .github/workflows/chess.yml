@@ -1,0 +1,19 @@
+name: Chess Bot
+
+on:
+  issues:
+    types: [opened]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  chess:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: timburgan/chess-readme@main
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
