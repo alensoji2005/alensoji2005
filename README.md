@@ -28,7 +28,7 @@
       <a href="https://github.com/alensoji2005/Saute-Bot">
         <img 
           src="https://github-readme-stats.vercel.app/api/pin/?username=alensoji2005&repo=Saute-Bot&theme=tokyonight&border_radius=8" 
-          alt="Project 1" 
+          alt="Saute-Bot" 
         />
       </a>
     </td>
@@ -36,7 +36,7 @@
       <a href="https://github.com/alensoji2005/tenderai">
         <img 
           src="https://github-readme-stats.vercel.app/api/pin/?username=alensoji2005&repo=tenderai&theme=tokyonight&border_radius=8" 
-          alt="Project 2" 
+          alt="tenderai" 
         />
       </a>
     </td>
@@ -46,7 +46,7 @@
 <div align="center">
   <img src="https://play.pokemonshowdown.com/sprites/gen5ani/charizard-megax.gif" alt="Charizard Companion" width="60px" />
   <br/>
-  <sub><b>Companion:</b> Charizard (Lvl. 100)</sub>
+  <sub><b>Companion:</b> Charizard (Lvl. 51)</sub>
 </div>
 ---
 
