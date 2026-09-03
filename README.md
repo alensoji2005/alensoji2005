@@ -22,23 +22,27 @@
 
 ### 🚀 Featured Projects
 
-<table align="center" width="100%">
+<table width="100%" align="center">
   <tr>
-    <td width="50%" align="center">
-      <a href="https://github.com/alensoji2005/Saute-Bot">
-        <img 
-          src="https://github-readme-stats.vercel.app/api/pin/?username=alensoji2005&repo=Saute-Bot&theme=tokyonight&border_radius=8" 
-          alt="Saute-Bot" 
-        />
-      </a>
+    <td width="50%" valign="top">
+      <h3 align="left">
+        <a href="https://github.com/alensoji2005/Saute-Bot">🍳 Saute-Bot</a>
+      </h3>
+      <p align="left">Automated bot service designed for streamlined workflow execution and tasks.</p>
+      <p align="left">
+        <img src="https://img.shields.io/github/stars/alensoji2005/Saute-Bot?style=flat-square&color=7aa2f7" alt="Stars" />
+        <img src="https://img.shields.io/github/repo-size/alensoji2005/Saute-Bot?style=flat-square&color=bb9af7" alt="Repo Size" />
+      </p>
     </td>
-    <td width="50%" align="center">
-      <a href="https://github.com/alensoji2005/tenderai">
-        <img 
-          src="https://github-readme-stats.vercel.app/api/pin/?username=alensoji2005&repo=tenderai&theme=tokyonight&border_radius=8" 
-          alt="tenderai" 
-        />
-      </a>
+    <td width="50%" valign="top">
+      <h3 align="left">
+        <a href="https://github.com/alensoji2005/tenderai">🤖 tenderai</a>
+      </h3>
+      <p align="left">AI-driven platform for parsing, analyzing, and managing tender opportunities.</p>
+      <p align="left">
+        <img src="https://img.shields.io/github/stars/alensoji2005/tenderai?style=flat-square&color=7aa2f7" alt="Stars" />
+        <img src="https://img.shields.io/github/repo-size/alensoji2005/tenderai?style=flat-square&color=bb9af7" alt="Repo Size" />
+      </p>
     </td>
   </tr>
 </table>
