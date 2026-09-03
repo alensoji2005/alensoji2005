@@ -28,7 +28,7 @@
       <h3 align="left">
         <a href="https://github.com/alensoji2005/Saute-Bot">🍳 Saute-Bot</a>
       </h3>
-      <p align="left">Automated bot service designed for streamlined workflow execution and tasks.</p>
+      <p align="left">An All in 1 AI Cooking Assistant.</p>
       <p align="left">
         <img src="https://img.shields.io/github/stars/alensoji2005/Saute-Bot?style=flat-square&color=7aa2f7" alt="Stars" />
         <img src="https://img.shields.io/github/repo-size/alensoji2005/Saute-Bot?style=flat-square&color=bb9af7" alt="Repo Size" />
@@ -38,7 +38,7 @@
       <h3 align="left">
         <a href="https://github.com/alensoji2005/tenderai">🤖 tenderai</a>
       </h3>
-      <p align="left">AI-driven platform for parsing, analyzing, and managing tender opportunities.</p>
+      <p align="left">ML-driven bid optimization platform for scraping, analyzing and managing public tender opportunities.</p>
       <p align="left">
         <img src="https://img.shields.io/github/stars/alensoji2005/tenderai?style=flat-square&color=7aa2f7" alt="Stars" />
         <img src="https://img.shields.io/github/repo-size/alensoji2005/tenderai?style=flat-square&color=bb9af7" alt="Repo Size" />
