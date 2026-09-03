@@ -1,0 +1,19 @@
+name: Visitor Guestbook
+
+on:
+  issues:
+    types: [opened]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  update-guestbook:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: muesli/readme-guestbook@master
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
