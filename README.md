@@ -1,4 +1,3 @@
-<!-- HERO SECTION -->
 <div align="center">
 
   <picture>
@@ -52,39 +51,37 @@
   <br/>
   <sub><b>Companion:</b> Charizard (Lvl. 51)</sub>
 </div>
+
 ---
 
-### 🛠️ Architecture & Tech Stack
+### ♟️ Community Chess Game
 
-```mermaid
-flowchart LR
-    subgraph Client["Frontend Layer"]
-        direction TB
-        UI[Next.js / React]
-        Style[Tailwind CSS]
-        UI --- Style
-    end
+<p align="center">
+  <i>Click on any valid move link below to play a turn against other visitors!</i>
+</p>
 
-    subgraph Core["Backend & Services"]
-        direction TB
-        Gateway[API Gateway / Node.js]
-        Cache[(Redis Cache)]
-        DB[(PostgreSQL / Supabase)]
-        Gateway -->|Query / Mutate| DB
-        Gateway -->|Cache Session| Cache
-    end
+---
 
-    subgraph Ops["Deployment & CI/CD"]
-        direction TB
-        Docker[Docker Containers]
-        Actions[GitHub Actions]
-        Docker --- Actions
-    end
+### 📖 Visitor Guestbook
 
-    Client -->|REST / GraphQL| Core
-    Core -->|Auto Deploy| Ops
+<p align="center">
+  Leave a note, feedback, or say hi!
+  <br/><br/>
+  <a href="https://github.com/alensoji2005/alensoji2005/issues/new?title=Guestbook&body=Hello+from+your+profile!">
+    <img src="https://img.shields.io/badge/✍️_Sign_Guestbook-7aa2f7?style=for-the-badge&logoColor=white" alt="Sign Guestbook" />
+  </a>
+</p>
 
-    %% Visual Styling
-    style Client fill:#1e1e2e,stroke:#89b4fa,stroke-width:2px,color:#cdd6f4
-    style Core fill:#181825,stroke:#a6e3a1,stroke-width:2px,color:#cdd6f4
-    style Ops fill:#11111b,stroke:#fab387,stroke-width:2px,color:#cdd6f4
+---
+
+### 🎮 Activity Garden
+
+<div align="center">
+
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/alensoji2005/alensoji2005/output/github-snake-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/alensoji2005/alensoji2005/output/github-snake.svg" />
+    <img alt="GitHub contribution snake animation" src="https://raw.githubusercontent.com/alensoji2005/alensoji2005/output/github-snake.svg" width="100%" />
+  </picture>
+
+</div>
