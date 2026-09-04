@@ -54,14 +54,6 @@
 
 ---
 
-### ♟️ Community Chess Game
-
-<p align="center">
-  <i>Click on any valid move link below to play a turn against other visitors!</i>
-</p>
-
----
-
 ### 📖 Visitor Guestbook
 
 <p align="center">
