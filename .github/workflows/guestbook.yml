@@ -10,7 +10,6 @@ permissions:
 
 jobs:
   sign:
-    # Only run when the issue title starts with "Guestbook"
     if: startsWith(github.event.issue.title, 'Guestbook')
     runs-on: ubuntu-latest
     steps:
@@ -23,7 +22,7 @@ jobs:
           MESSAGE: ${{ github.event.issue.body }}
         run: |
           python3 -c "
-          import os, re
+          import os, re, sys
 
           user = os.environ['USER_LOGIN']
           avatar = os.environ['USER_AVATAR']
@@ -39,21 +38,24 @@ jobs:
           end = '<!-- GUESTBOOK-END -->'
           header = '| Avatar | User | Message |\n| :---: | :--- | :--- |'
 
-          if start in content and end in content:
-              match = re.search(f'{start}(.*?){end}', content, re.DOTALL)
-              inner = match.group(1).strip()
-              
-              if '| Avatar |' not in inner:
-                  rows = [new_row]
-              else:
-                  existing_rows = [r for r in inner.split('\n') if r.startswith('|') and not r.startswith('| Avatar') and not r.startswith('| :---')]
-                  rows = [new_row] + existing_rows[:9] # Keep latest 10 signatures
+          if start not in content or end not in content:
+              print('ERROR: Missing GUESTBOOK-START or GUESTBOOK-END tags in README.md', file=sys.stderr)
+              sys.exit(1)
 
-              updated = f'{start}\n\n{header}\n' + '\n'.join(rows) + f'\n\n{end}'
-              new_content = re.sub(f'{start}.*?{end}', updated, content, flags=re.DOTALL)
+          match = re.search(f'{start}(.*?){end}', content, re.DOTALL)
+          inner = match.group(1).strip()
 
-              with open('README.md', 'w', encoding='utf-8') as f:
-                  f.write(new_content)
+          if '| Avatar |' not in inner:
+              rows = [new_row]
+          else:
+              existing_rows = [r for r in inner.split('\n') if r.startswith('|') and not r.startswith('| Avatar') and not r.startswith('| :---')]
+              rows = [new_row] + existing_rows[:9]
+
+          updated = f'{start}\n\n{header}\n' + '\n'.join(rows) + f'\n\n{end}'
+          new_content = re.sub(f'{start}.*?{end}', updated, content, flags=re.DOTALL)
+
+          with open('README.md', 'w', encoding='utf-8') as f:
+              f.write(new_content)
           "
 
       - name: Commit & Push Signature
@@ -61,7 +63,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add README.md
-          git commit -m "Add guestbook signature from @${{ github.event.issue.user.login }}" || exit 0
+          git commit -m "Add guestbook signature from @${{ github.event.issue.user.login }}"
           git push
 
       - name: Close Issue
